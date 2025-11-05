@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
+  css: ['~/assets/main.css'],
   modules: [
     '@nuxt/fonts',
     '@nuxt/image',
@@ -18,6 +19,14 @@ export default defineNuxtConfig({
       })
     },
   ],
+    app: {
+    head: {
+      link: [
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css', crossorigin:'anonymous' }
+      ],
+      
+    },
+  },
     vite: {
     vue: {
       template: {
