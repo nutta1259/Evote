@@ -61,33 +61,54 @@
 </template>
 
 <script setup>
+import Swal from 'sweetalert2'
 const props = defineProps({
-  loginType: {
-    type: String,
-    default: null
-
-  }
-})
+    loginType: {
+        type: String,
+        default: null
+    }
+});
 
 const form = ref(null)
 
 let user = ref({
-  userName:'',
-  userPass:''
+    userName: '',
+    userPass: '',
 })
 
-onMounted(async()=>{
-  form.value.resetValidation()
-  await $fetch('/api/user').then((users)=>{
-    console.log(users)
-  })
+onMounted(async ()=>{
+    form.value.resetValidation()
+    // await $fetch('/api/user').then((users)=>{
+    //     console.log(users)
+    // })
 })
 
 async function login() {
-
-  const { valid } = await form.value.validate()
-  if (valid) {
-
-  }
+    const { valid } = await form.value.validate()
+    if(valid) {
+        if(props.loginType == 'User') {
+            let res = await $fetch('api/user', {
+                method: 'POST',
+                body: {
+                    fn: 'userAuth',
+                    userName: user.value.userName,
+                    userPass: user.value.userPass
+                }
+            });
+            if(res.status) {
+                let data = JSON.parse(JSON.stringify(res.data))
+                sessionStorage.setItem('loginUser', JSON.stringify(data))
+                if(data.userStatus == 'Admin') {
+                    navigateTo('/Admin', {replace: true})
+                }
+            } else {
+                Swal.fire({
+                    title: "ไม่สำเร็จ",
+                    text: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+                    icon: "warning"
+                })
+            }
+        }
+    }
 }
 </script>
