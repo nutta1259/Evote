@@ -1,6 +1,6 @@
 <template>
     <h1>Admin</h1>
-    <h2>หน้าหลัก</h2>
+    <h2>ข้อมูลลูกค้า thing</h2>
 </template>
 
 <script setup>

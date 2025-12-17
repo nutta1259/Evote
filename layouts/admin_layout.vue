@@ -1,6 +1,6 @@
 <template>
   <v-app id="dlayout">
-    <v-app-bar
+    <!-- <v-app-bar
         image="https://videogameacademia.org/wp-content/uploads/2021/01/20210116224644_1.jpg?w=1080"
     >
         <template v-slot:image>
@@ -17,8 +17,15 @@
     <v-navigation-drawer
       v-model="drawer"
       temporary
+    > -->
+    <v-navigation-drawer
+       v-model="drawer"
+       permanent
+       width="280"
     >
-        <!--  -->
+    
+    <img src="/image/logo.png" alt="" height="95px" width="275px" style="margin: 3px;margin-top: 20px;">
+
         <v-list class="mt-3" nav>
             <v-list-item
                 color="primary"
@@ -35,37 +42,37 @@
             <v-list-item
                 color="primary"
                 value=""
-                to="/Admin/candidate"
+                to="/Admin/order"
+            >
+                <template v-slot:prepend>
+                <v-icon class="fa-solid fa-inbox"></v-icon>
+                </template>
+                <v-list-item-title class="font-weight-bold">
+                    ออเดอร์ลูกค้า
+                </v-list-item-title>
+            </v-list-item>
+            <v-list-item
+                color="primary"
+                value=""
+                to="/Admin/CustomerInfo"
             >
                 <template v-slot:prepend>
                 <v-icon class="fas fa-users"></v-icon>
                 </template>
                 <v-list-item-title class="font-weight-bold">
-                    ข้อมูลผู้สมัคร
+                    ข้อมูลลูกค้า
                 </v-list-item-title>
             </v-list-item>
             <v-list-item
                 color="primary"
                 value=""
-                to="/Admin/student"
+                to="/Admin/finance"
             >
                 <template v-slot:prepend>
-                <v-icon class="fas fa-code"></v-icon>
+                <v-icon class="fa-solid fa-dollar-sign"></v-icon>
                 </template>
                 <v-list-item-title class="font-weight-bold">
-                    ข้อมูลนักศึกษา
-                </v-list-item-title>
-            </v-list-item>
-            <v-list-item
-                color="primary"
-                value=""
-                to="/Admin/voteresult"
-            >
-                <template v-slot:prepend>
-                <v-icon class="fas fa-code"></v-icon>
-                </template>
-                <v-list-item-title class="font-weight-bold">
-                    ข้อมูลผลการเลือกตั้ง
+                    ข้อมูลยอดเงิน
                 </v-list-item-title>
             </v-list-item>
             <v-list-item
@@ -74,7 +81,7 @@
                 @click="signout"
             >
                 <template v-slot:prepend>
-                <v-icon class="fas fa-code"></v-icon>
+                <v-icon class="fa-solid fa-arrow-right-from-bracket"></v-icon>
                 </template>
                 <v-list-item-title class="font-weight-bold">
                     ออกจากระบบ

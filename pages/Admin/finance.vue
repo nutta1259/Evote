@@ -1,6 +1,6 @@
 <template>
     <h1>Admin</h1>
-    <h2>หน้าหลัก</h2>
+    <h2>ข้อมูลเงินเข้าออก</h2>
 </template>
 
 <script setup>

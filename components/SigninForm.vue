@@ -6,7 +6,7 @@
     elevation="16"
     max-width="500"
   >
-    <v-card-item class="bg-deep-purple-lighten-1">
+    <v-card-item class="bg-brown-lighten-1">
       <v-card-title class="font-weight-bold pa-3">
         <v-icon class="fas fa-right-to-bracket" mr-2></v-icon>
         เข้าสู่ระบบ
@@ -78,9 +78,9 @@ let user = ref({
 
 onMounted(async ()=>{
     form.value.resetValidation()
-    // await $fetch('/api/user').then((users)=>{
-    //     console.log(users)
-    // })
+     //await $fetch('/api/user').then((users)=>{
+     //    console.log(users)
+     //})
 })
 
 async function login() {
@@ -100,6 +100,8 @@ async function login() {
                 sessionStorage.setItem('loginUser', JSON.stringify(data))
                 if(data.userStatus == 'Admin') {
                     navigateTo('/Admin', {replace: true})
+                } else if(data.userStatus == 'customer') {
+                    navigateTo('/', {replace: true})
                 }
             } else {
                 Swal.fire({
